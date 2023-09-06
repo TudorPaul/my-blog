@@ -1,20 +1,19 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-12 pt-2">
-                <a href="/blog" class="btn btn-outline-primary btn-sm">Go back</a>
-                <h1 class="display-one">{{ ucfirst($post->title) }}</h1>
-                <p>{!! $post->body !!}</p> 
-                <hr>
-                <a href="/blog/{{ $post->id }}/edit" class="btn btn-outline-primary">Edit Post</a>
-                <br><br>
-                <form id="delete-frm" class="" action="" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-danger">Delete Post</button>
-                </form>
-            </div>
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+        <div class="col px-0">
+            <h1 class="display-4 fst-italic">{{ ucfirst($post->title) }}</h1>
+            <p class="lead my-3">{!! $post->body !!}</p>
+        </div>
+        <div class="d-grid gap-4 d-sm-flex justify-content-sm-center">
+            <a href="/blog/{{ $post->id }}/edit" class="btn btn-outline-primary mr-2">Edit Post</a>
+            <form id="delete-frm" class="ml-2" action="" method="POST">
+                @method('DELETE')
+                @csrf
+                <button class="btn btn-danger">Delete Post</button>
+            </form>
         </div>
     </div>
+</main>
 @endsection
